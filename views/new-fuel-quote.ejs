@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<!-- head begins -->
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Fuel App | New Fuel Quote</title>
+		<!-- title -->
+		<link rel="stylesheet" href="../css/new-fuel-quote.css" />
+		<!-- linking the css file -->
+	</head>
+	<!-- head ends -->
+
+	<body>
+		<!--header-->
+		<header>
+			<div class="banner" style="height: 75px">
+				<div class="logo">
+					<img src="img/logo_V4.png" alt="logo" />
+				</div>
+
+				<!--home button-->
+				<form action="/">
+					<input type="submit" class="home-button" title="Go back to home." value="Home" />
+				</form>
+
+				<!--logout button -->
+				<form method="POST" action="/logout">
+					<input type="submit" class="logout-button" title="Log out of account." value="Logout" />
+				</form>
+			</div>
+		</header>
+		<!-- body begins -->
+		<div class="container">
+			<!-- creating a form -->
+			<div class="form-parent-class" id="new-fuel-quote">
+				<h1 class="form-title">New Fuel Quote</h1>
+
+				<div class="form-input-group">
+					<!-- gallons-requested box-->
+					<label for="gallons-requested"><b>Gallons Requested:</b></label>
+					<input type="number" step="any" class="form-input" name="gallonsRequested" id="gallons-requested" min="0" oninput="this.value = 
+					!!this.value && Math.abs(this.value) >= 0 ? Math.abs(this.value) : null" required />
+				</div>
+
+				<div class="form-output-group">
+					<!-- delivery-address box-->
+					<label for="delivery-address"><b>Delivery Address:</b></label>
+					<span class="form-output" style="color: #adb5bd">
+						<!--call from database-->
+						<%= locals.address %>
+					</span>
+				</div>
+
+				<div class="form-input-group">
+					<!-- deliveryDate box-->
+					<label for="deliveryDate"><b>Delivery Date:</b></label>
+					<input type="date" class="form-input" name="deliveryDate" id="deliveryDate" required />
+				</div>
+
+				<div class="form-output-group">
+					<!-- suggested-price box-->
+					<table class="table-1">
+						<!-- table of 1Rx2C to output suggested-price -->
+						<tr>
+							<!-- row-1 begins -->
+							<td>
+								<!-- col-1 begins -->
+								<label for="suggested-price"><b>Suggested Price:</b></label>
+							</td>
+							<!-- col-1 ends -->
+							<td>
+								<!-- col-2 begins -->
+								<label for="suggestedPrice" />
+								<input class="suggested-price" type="number" name="suggestedPrice" value="0" disabled style="border: 0" />
+							</td>
+							<!-- col-2 ends -->
+						</tr>
+						<!-- row-1 ends -->
+					</table>
+					<!-- table begins -->
+				</div>
+
+				<div class="form-output-group">
+					<!-- total-amount-due box-->
+					<table class="table-2">
+						<!-- table of 1Rx2C to output suggested-price -->
+						<tr>
+							<!-- row-1 begins -->
+							<td>
+								<!-- col-1 begins -->
+								<label for="total-amount"><b>Total Amount Due:</b></label>
+							</td>
+							<!-- col-1 ends -->
+							<td>
+								<!-- col-2 begins -->
+								<input class="total-amount" name="totalAmount" value="0" disabled style="border: 0" />
+							</td>
+							<!-- col-2 ends -->
+						</tr>
+						<!-- row-1 ends -->
+					</table>
+					<!-- table begins -->
+				</div>
+
+				<div class="form-input-group button-group">
+					<!-- submit-button box-->
+					<input type="button" class="form-button disabled" disabled title="Click here to Get a New Fuel Quote" id="get-quote" value="Get Quote" />
+					<input type="submit" disabled class="form-button disabled" id="submit-button" title="Please request quote before submitting" value="Submit" />
+				</div>
+			</div>
+			<!-- form ends here -->
+		</div>
+		<!-- container box ends here -->
+		<script src="../js/setMinDate.js"></script>
+		<script src="../js/pricing.js"></script>
+		<script src="../js/pricingPage.js"></script>
+	</body>
+	<!-- body ends -->
+</html>
